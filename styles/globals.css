@@ -1,0 +1,71 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --ave-cielo: #9dd3ee;
+  --ave-cielo-claro: #eaf6fc;
+  --ave-rojo: #d62839;
+  --ave-oscuro: #16263d;
+  --ave-azul-claro: #eaf6fc;
+}
+
+body {
+  color: var(--ave-oscuro);
+  background: #ffffff;
+  font-family: Figtree, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@layer base {
+  h1,
+  h2,
+  h3 {
+    font-family: 'Bricolage Grotesque', system-ui, sans-serif;
+    letter-spacing: -0.02em;
+  }
+
+  /* Foco visible para quien navega con teclado */
+  :focus-visible {
+    outline: 2px solid var(--ave-rojo);
+    outline-offset: 2px;
+  }
+}
+
+@layer utilities {
+  /* Rompe el contenedor central para secciones de ancho completo */
+  .a-sangre {
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+  }
+
+  .sin-barra::-webkit-scrollbar {
+    display: none;
+  }
+  .sin-barra {
+    scrollbar-width: none;
+  }
+}
+
+/* Una sola animación de entrada, en el hero. Respeta a quien pide menos movimiento. */
+@keyframes aparecer {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.entrada-hero {
+  animation: aparecer 0.7s ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .entrada-hero {
+    animation: none;
+  }
+}

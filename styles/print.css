@@ -1,0 +1,62 @@
+/* Oculto por defecto en pantalla; visible solo al imprimir */
+.hoja-impresion {
+  display: none;
+}
+
+@media print {
+  /* Oculta TODO lo que no sea la hoja de impresión */
+  body * {
+    visibility: hidden;
+  }
+
+  .hoja-impresion,
+  .hoja-impresion * {
+    visibility: visible;
+  }
+
+  .hoja-impresion {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    color: #000;
+    background: #fff;
+  }
+
+  /* Oculta explícitamente nav, sidebar, botones */
+  .no-imprimir {
+    display: none !important;
+  }
+
+  .hoja-impresion table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 12px;
+  }
+
+  .hoja-impresion th,
+  .hoja-impresion td {
+    border: 1px solid #000;
+    padding: 6px 8px;
+    text-align: left;
+    font-size: 13px;
+  }
+
+  .hoja-impresion h1 {
+    font-size: 18px;
+    margin-bottom: 4px;
+  }
+
+  .hoja-impresion .subtotal-fila {
+    font-weight: bold;
+    border-top: 2px solid #000;
+  }
+
+  @page {
+    size: letter;
+    margin: 1.5cm;
+  }
+}
